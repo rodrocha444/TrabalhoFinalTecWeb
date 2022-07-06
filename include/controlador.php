@@ -22,9 +22,13 @@ if (isset($_GET['rota'])) {
 //Post
 if (isset($_POST['formCadastrarCliente'])) {
     $objCliente = new Cliente();
+    $objCliente->setEmail($_POST['emailCliente']);
     $objCliente->setNome($_POST['nomeCliente']);
     $objCliente->setCPF($_POST['cpfCliente']);
-    $objCliente->setEmail($_POST['emailCliente']);
+    $objCliente->setTelefone($_POST['telefoneCliente']);
+    $objCliente->setRua($_POST['ruaCliente']);
+    $objCliente->setCidade($_POST['cidadeCliente']);
+    $objCliente->setEstado($_POST['estadoCliente']);
    
     $objCliente->cadastrar();
 

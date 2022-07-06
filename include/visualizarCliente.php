@@ -62,7 +62,7 @@ if ($objCliente->retornoBD != null) {
                         $retorno->nome_cliente . '</td><td>' .
                         $retorno->email_cliente . '</td><td>' .
                         $retorno->cpf_cliente . '</td><td>'.
-                        $retorno->celular_cliente . '</td>';
+                        $retorno->telefone_cliente . '</td>';
 
                     echo '<td><a href="?rota=editar_cliente&id='.$retorno->id_cliente.'" class="btn btn-info btn-circle btn-sm"><i class="fas fa-list"></i></a></td>';
                     echo '<td><a href="#" class="btn btn-danger btn-circle btn-sm" onclick=\'deletarCliente("' . $retorno->id_cliente . '")\';><i class="fas fa-trash"></i></a></td></tr>';

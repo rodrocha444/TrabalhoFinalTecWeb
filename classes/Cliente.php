@@ -4,9 +4,14 @@ include("../classes/Utilidades.php");
 class Cliente
 {
 
+    private $email;
     private $nome;
     private $cpf;
-    private $email;
+    private $telefone;
+    private $rua;
+    private $cidade;
+    private $estado;
+
     private $id;
     private $utilidades;
 
@@ -36,6 +41,22 @@ class Cliente
     {
         return $this->email;
     }
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+    public function getRua()
+    {
+        return $this->rua;
+    }
+    public function getCidade()
+    {
+        return $this->cidade;
+    }
+    public function getEstado()
+    {
+        return $this->estado;
+    }
 
     public function setEmail($email)
     {
@@ -52,6 +73,26 @@ class Cliente
         //validacao
         return $this->cpf = $cpf;
     }
+    public function setTelefone($telefone)
+    {
+        //validacao
+        return $this->telefone = $telefone;
+    }
+    public function setRua($rua)
+    {
+        //validacao
+        return $this->rua = $rua;
+    }
+    public function setCidade($cidade)
+    {
+        //validacao
+        return $this->cidade = $cidade;
+    }
+    public function setEstado($estado)
+    {
+        //validacao
+        return $this->estado = $estado;
+    }
     public function setId($id)
     {
         //validacao
@@ -63,9 +104,16 @@ class Cliente
 
         if ($this->getCPF() != null) {
 
-            $interacaoMySql = $this->conexaoBD->prepare("INSERT INTO cliente (nome_cliente, email_cliente, cpf_cliente) 
-            VALUES (?, ?, ?)");
-            $interacaoMySql->bind_param('sss', $this->getNome(), $this->getEmail(), $this->getCPF());
+            $interacaoMySql = $this->conexaoBD->prepare("INSERT INTO cliente (nome_cliente, email_cliente, cpf_cliente, telefone_cliente, rua_cliente, cidade_cliente, estado_cliente) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $email = $this->getEmail();
+            $nome = $this->getNome();
+            $cpf = $this->getCPF();
+            $telefone = $this->getTelefone();
+            $rua = $this->getRua();
+            $cidade = $this->getCidade();
+            $estado = $this->getEstado();
+            $interacaoMySql->bind_param('sssssss', $nome, $email, $cpf, $telefone, $rua, $cidade, $estado);
             $retorno = $interacaoMySql->execute();
 
             $id = mysqli_insert_id($this->conexaoBD);
@@ -114,7 +162,7 @@ class Cliente
 
     public function deletar($id)
     {
-        $sql = "DELETE from cliente2 where id_cliente=$id";
+        $sql = "DELETE from cliente where id_cliente=$id";
         $this->retornoBD = $this->conexaoBD->query($sql);
         $this->utilidades->validaRedirecionaAcaoDeletar($this->retornoBD, 'admin.php?rota=visualizar_cliente', 'O cliente foi deletado com sucesso!');
     }

@@ -27,7 +27,7 @@ class Utilidades{
 
     public function validaRedirecionar($retornoBanco, $id, $pag, $msg)  {
         if ($retornoBanco != 0) {
-            $link = $pag . "&id=" . $id . '&msg=' . $msg;
+            $link = $pag  . '&msg=' . $msg;
             $this->redireciona($link);
             return true;
         } else {
