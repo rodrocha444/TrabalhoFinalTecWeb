@@ -14,7 +14,11 @@ if (isset($_GET['rota'])) {
         case "editar_cliente":
             include("../include/editarCliente.php");
             break;
-     
+        case "logout":
+            $_SESSION["administrador"] = false;
+            session_destroy();
+            echo " <script>document.location.href='../index.html'</script>";
+            break;
     }
 }
 
@@ -29,9 +33,8 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->setRua($_POST['ruaCliente']);
     $objCliente->setCidade($_POST['cidadeCliente']);
     $objCliente->setEstado($_POST['estadoCliente']);
-   
-    $objCliente->cadastrar();
 
+    $objCliente->cadastrar();
 } else if (isset($_POST['formEditarCliente'])) {
     $objCliente = new Cliente();
     $objCliente->setNome($_POST['nomeCliente']);
@@ -39,5 +42,4 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->setEmail($_POST['emailCliente']);
     $objCliente->setID($_POST['idCliente']);
     $objCliente->editar();
-
 }
