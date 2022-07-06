@@ -151,7 +151,7 @@ class Cliente
     }
     public function selecionarPorCPF($cpf)
     {
-        $sql = "select * from cliente where cpf_cliente=$cpf";
+        $sql = "select * from cliente where cpf_cliente LIKE '%$cpf%'";;
         if ($cpf != " " and $cpf != '') {
             $this->retornoBD = $this->conexaoBD->query($sql);
         } else {
