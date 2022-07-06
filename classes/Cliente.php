@@ -114,7 +114,7 @@ class Cliente
 
     public function deletar($id)
     {
-        $sql = "DELETE from cliente where id_cliente=$id";
+        $sql = "DELETE from cliente2 where id_cliente=$id";
         $this->retornoBD = $this->conexaoBD->query($sql);
         $this->utilidades->validaRedirecionaAcaoDeletar($this->retornoBD, 'admin.php?rota=visualizar_cliente', 'O cliente foi deletado com sucesso!');
     }
