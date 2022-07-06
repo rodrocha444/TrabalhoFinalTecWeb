@@ -152,7 +152,20 @@ class Cliente
     public function selecionarPorCPF($cpf)
     {
         $sql = "select * from cliente where cpf_cliente=$cpf";
-        $this->retornoBD = $this->conexaoBD->query($sql);
+        if ($cpf != " " and $cpf != '') {
+            $this->retornoBD = $this->conexaoBD->query($sql);
+        } else {
+            $this->selecionarClientes();
+        }
+    }
+    public function selecionarPorNome($nome)
+    {
+        $sql = "select * from cliente where nome_cliente LIKE '%$nome%'";
+        if ($nome != " " and $nome != '') {
+            $this->retornoBD = $this->conexaoBD->query($sql);
+        } else {
+            $this->selecionarClientes();
+        }
     }
     public function selecionarClientes()
     {
