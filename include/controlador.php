@@ -62,4 +62,10 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objAnimal->setIdCliente($_POST['idClienteAnimal']);
     $objAnimal->setId($_POST['idAnimal']);
     $objAnimal->editar();
+} else if (isset($_POST['formCadastrarAnimal'])) {
+    $objCliente = new Animal();
+    $objCliente->setNome($_POST['nomeAnimal']);
+    $objCliente->setIdCliente($_POST['idClienteAnimal']);
+
+    $objCliente->cadastrar();
 }

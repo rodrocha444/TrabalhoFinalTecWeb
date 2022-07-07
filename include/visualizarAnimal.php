@@ -35,10 +35,11 @@ if (isset($_SESSION['administrador'])) {
     <?php
     $objAnimal = new Animal();
 
-    if (isset($_POST['nomeAnimal']) and $_POST['nomeAnimal'] != "" and $_POST['nomeAnimal'] != " ") {
-        $objAnimal->selecionarPorNome($_POST['nomeAnimal']);
-    } else if (isset($_POST['nomeClienteAnimal'])) {
+    if (isset($_POST['idClienteAnimal'])) {
         $objAnimal->selecionarPorIdCliente($_POST['idClienteAnimal']);
+    }
+    else if (isset($_POST['nomeAnimal']) and $_POST['nomeAnimal'] != "" and $_POST['nomeAnimal'] != " ") {
+        $objAnimal->selecionarPorNome($_POST['nomeAnimal']);
     } else {
         $objAnimal->selecionarAnimais();
     }
@@ -52,7 +53,7 @@ if (isset($_SESSION['administrador'])) {
                     <tr>
                         <th width="5%">#</th>
                         <th width="25%">Nome</th>
-                        <th width="25%">Cliente</th>
+                        <th width="25%">ID Cliente</th>
                         <th width="10%">Editar</th>
                         <th width="10%">Deletar</th>
                     </tr>
