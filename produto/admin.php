@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["administrador"]) and $_SESSION["administrador"]==true) {
+if (isset($_SESSION["administrador"]) and $_SESSION["administrador"] == true) {
 
 ?>
     <!DOCTYPE html>
@@ -22,6 +22,8 @@ if (isset($_SESSION["administrador"]) and $_SESSION["administrador"]==true) {
 
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     </head>
 
@@ -70,6 +72,19 @@ if (isset($_SESSION["administrador"]) and $_SESSION["administrador"]==true) {
                             <h6 class="collapse-header">Funcionalidades:</h6>
                             <a class="collapse-item" href="?rota=cadastrar_cliente">Cadastrar</a>
                             <a class="collapse-item" href="?rota=visualizar_cliente">Visualizar</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Animais</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Funcionalidades:</h6>
+                            <a class="collapse-item" href="?rota=cadastrar_animal">Cadastrar</a>
+                            <a class="collapse-item" href="?rota=visualizar_animal">Visualizar</a>
                         </div>
                     </div>
                 </li>
@@ -269,7 +284,7 @@ if (isset($_SESSION["administrador"]) and $_SESSION["administrador"]==true) {
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
-                                        
+
                                         Logout
                                     </a>
                                 </div>
@@ -359,12 +374,13 @@ if (isset($_SESSION["administrador"]) and $_SESSION["administrador"]==true) {
 
         <!-- funcoes adicioandas -->
         <script src="../js/principal.js"></script>
+        <script src="../js/principal2.js"></script>
 
     </body>
 
     </html>
 <?php
-}else{
-    echo" <script>document.location.href='../index.html'</script>";
+} else {
+    echo " <script>document.location.href='../index.html'</script>";
 }
 ?>

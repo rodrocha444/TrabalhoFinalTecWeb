@@ -1,6 +1,6 @@
 <?php
-include("../classes/Conexao.php");
-include("../classes/Utilidades.php");
+include_once("../classes/Conexao.php");
+include_once("../classes/Utilidades.php");
 class Cliente
 {
 
