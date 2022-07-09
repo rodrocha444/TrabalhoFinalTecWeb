@@ -1,6 +1,7 @@
 <?php
 include_once("../classes/Cliente.php");
 include_once("../classes/Animal.php");
+include_once("../classes/Consulta.php");
 //Get
 if (isset($_GET['rota'])) {
     switch ($_GET['rota']) {
@@ -28,6 +29,14 @@ if (isset($_GET['rota'])) {
             include("../include/editarAnimal.php");
             break;
 
+        case "cadastrar_consulta":
+            include("../include/cadastrarConsulta.php");
+            break;
+
+        case "visualizar_consulta":
+            include("../include/visualizarConsulta.php");
+            break;
+            
         case "logout":
             $_SESSION["administrador"] = false;
             session_destroy();
@@ -68,4 +77,10 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->setIdCliente($_POST['idClienteAnimal']);
 
     $objCliente->cadastrar();
+} else if (isset($_POST['formCadastrarConsulta'])) {
+    $objConsulta = new Consulta();
+    $objConsulta->setFkIdAnimal($_POST['fkIdAnimal']);
+    $objConsulta->setData($_POST['dataConsulta']);
+    $objConsulta->setHora($_POST['horaConsulta']);
+    $objConsulta->cadastrar();
 }
